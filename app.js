@@ -11,7 +11,10 @@ var app = express();
 
 //add mongose
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/planify')
+mongoose.connect('mongodb://localhost/planify',{
+          useNewUrlParser: true, 
+          useUnifiedTopology: true
+})
 
 
 //add cors
