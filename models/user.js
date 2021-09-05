@@ -15,7 +15,7 @@
  }
 
  schema.methods.isValid = function(hashedpassword){
-     return bcrypt.compareSync(hashPassword, this.password);
+     return bcrypt.compareSync(hashedpassword, this.password);
  }
 
  module.exports = mongoose.model('User',schema)

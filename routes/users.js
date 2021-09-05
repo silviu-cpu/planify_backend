@@ -21,6 +21,7 @@ router.post('/registration', function(req,res,next){
   promise.catch(function(err){
     return res.status(501).json({message: 'Error registering user.'})
   })
+
 })
 
 router.post('/login', function(req,res,next){
@@ -46,4 +47,13 @@ router.post('/login', function(req,res,next){
     return res.status(501).json({message:'Internal error'})
   })
 })
+
+router.get('/username', verifyToken, function(req,res,next){
+
+})
+//middleware
+function verifyToken(req,res,next){
+
+}
+
 module.exports = router;
