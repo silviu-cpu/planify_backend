@@ -19,9 +19,7 @@ mongoose.connect('mongodb+srv://admin:rosfizor@cluster0.2p5ls.mongodb.net/planif
 
 //add cors
 var cors = require('cors');
-app.use(cors({
-  origin:'http://localhost:4200'
-}))
+app.use(cors())
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
