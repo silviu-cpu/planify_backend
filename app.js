@@ -11,7 +11,7 @@ var app = express();
 
 //add mongose
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/planify',{
+mongoose.connect('mongodb+srv://admin:rosfizor@cluster0.2p5ls.mongodb.net/planify?retryWrites=true&w=majority',{
           useNewUrlParser: true, 
           useUnifiedTopology: true
 })
@@ -50,5 +50,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+app.listen(process.env.PORT || 5000)
 
 module.exports = app;
