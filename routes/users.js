@@ -49,10 +49,22 @@ router.post('/login', function(req,res,next){
 })
 
 router.get('/username', verifyToken, function(req,res,next){
-
+  return res.status(200).json(decodedToken.username);
 })
 //middleware
+var decodedToken='';
 function verifyToken(req,res,next){
+  let token = req.query.token;
+
+  jwt.verify(token,'secret',function(err, tokendata){
+    if(err){
+      return res.status(400).json({message: ' Unaurhorized request '});
+    }
+    if(tokendata){
+      decodedToken = tokendata;
+      next();
+    }
+  })
 
 }
 
