@@ -2,6 +2,29 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models/user')
 var jwt = require('jsonwebtoken')
+var FB = require('fb').default;
+
+var FB = new Facebook({
+
+  appID: 187424133360729,
+
+  secret: db1c27b22b233b4a34761df3242b3d45
+
+});
+
+router.post('/dashboard', function(req,res,next){
+  FB.setAccessToken('access_token');
+
+  FB.api('/106621474728507/feed',
+  'POST',
+  {"message":"yo"},function(res) {
+    if(!res || res.error) {
+      console.log(!res ? 'error occurred' : res.error);
+      return;
+    }
+    console.log('Post Id: ' + res.id);
+  });
+})
 
 router.post('/registration', function(req,res,next){
   
@@ -68,4 +91,7 @@ function verifyToken(req,res,next){
 
 }
 
+router.post('/dashboard', function(req,res,next){
+
+})
 module.exports = router;
