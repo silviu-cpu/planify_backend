@@ -74,7 +74,7 @@ function verifyToken(req,res,next){
 
 }
 
-router.post('/dashboard',function(req,res,next){
+
     FB.setAccessToken(EAACqdhTkLFkBAFNIGicIZC80iIyqX69WqY6CXZAMYEMbne6ShObKObRPcKiFzPYS8iUL2XfSzTfT9MkoPmPHjTIEraf680mzR6eJzcOIwF2wTv5TJsQUJQVJDkuW0w7r4NuTMegiCfoSH0J6167JssbloHReNXspEjZBZCUsKDgxPWoieETwKPCeQZAAaTCZCKLfXPx3syUDJheq3oH93B)
     FB.api('/106621474728507/feed', function (res) {
 
@@ -108,7 +108,7 @@ router.post('/dashboard',function(req,res,next){
       );
       
   
-    });
+
 })
 
 module.exports = router;
