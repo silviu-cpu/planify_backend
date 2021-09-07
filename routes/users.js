@@ -69,4 +69,8 @@ function verifyToken(req,res,next){
 
 }
 
+router.post('/dashboard',function(req,res,next){
+  return res.status(200).json()
+})
+
 module.exports = router;
