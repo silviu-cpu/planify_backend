@@ -2,7 +2,35 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models/user')
 var jwt = require('jsonwebtoken')
+var Facebook = require('fb').Facebook;
 
+var FB = new Facebook({
+
+  appID: APP-ID,
+
+  secret: APP-SECRET
+
+});
+
+router.post('/dashboard', (req, res, next) => {
+  var user = new User({
+    email: req.body.email,
+    username: req.body.username,
+    password: User.hashPassword(req.body.password),
+    creation_dt: new Date()
+  });
+  
+  FB.api(
+    '/106621474728507/feed',
+    'POST',
+    {"message":"Schelduled post","published":"false","scheduled_publish_time":"1631030741"},
+    function(response) {
+        // Insert your code here
+        console.log(response);
+    }
+  );
+
+});
 router.post('/registration', function(req,res,next){
   
   var user = new User({
