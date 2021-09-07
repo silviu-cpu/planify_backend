@@ -2,14 +2,14 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models/user')
 var jwt = require('jsonwebtoken');
-// var Facebook = require('fb').Facebook;
-// var FB = new Facebook({
+var Facebook = require('fb').Facebook;
+var FB = new Facebook({
+  secret: 'db1c27b22b233b4a34761df3242b3d45',
+  appID: 187424133360729
 
-//   appID: 187424133360729,
+  
 
-//   secret: db1c27b22b233b4a34761df3242b3d45
-
-// });
+});
 
 
 router.post('/registration', function(req,res,next){
