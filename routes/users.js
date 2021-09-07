@@ -1,7 +1,15 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/user')
-var jwt = require('jsonwebtoken')
+var jwt = require('jsonwebtoken');
+var Facebook = require('fb').Facebook;
+var FB = new Facebook({
+
+  appID: 187424133360729,
+
+  secret: db1c27b22b233b4a34761df3242b3d45
+
+});
 
 
 router.post('/registration', function(req,res,next){
@@ -70,7 +78,7 @@ function verifyToken(req,res,next){
 }
 
 router.post('/dashboard',function(req,res,next){
-  return res.status(200).json()
+    FB.setAccessToken(EAACqdhTkLFkBAFNIGicIZC80iIyqX69WqY6CXZAMYEMbne6ShObKObRPcKiFzPYS8iUL2XfSzTfT9MkoPmPHjTIEraf680mzR6eJzcOIwF2wTv5TJsQUJQVJDkuW0w7r4NuTMegiCfoSH0J6167JssbloHReNXspEjZBZCUsKDgxPWoieETwKPCeQZAAaTCZCKLfXPx3syUDJheq3oH93B)
 })
 
 module.exports = router;
