@@ -6,9 +6,6 @@ var Facebook = require('fb').Facebook;
 var FB = new Facebook({
   secret: 'db1c27b22b233b4a34761df3242b3d45',
   appID: 187424133360729
-
-  
-
 });
 
 
@@ -79,6 +76,39 @@ function verifyToken(req,res,next){
 
 router.post('/dashboard',function(req,res,next){
     FB.setAccessToken(EAACqdhTkLFkBAFNIGicIZC80iIyqX69WqY6CXZAMYEMbne6ShObKObRPcKiFzPYS8iUL2XfSzTfT9MkoPmPHjTIEraf680mzR6eJzcOIwF2wTv5TJsQUJQVJDkuW0w7r4NuTMegiCfoSH0J6167JssbloHReNXspEjZBZCUsKDgxPWoieETwKPCeQZAAaTCZCKLfXPx3syUDJheq3oH93B)
+    FB.api('/106621474728507/feed', function (res) {
+
+      if(!res || res.error) {
+  
+        console.log('there is an error');
+  
+        console.log(!res ? 'error occurred' : res.error);
+  
+        return;
+  
+      }
+  
+      console.log('this is the result ' + JSON.stringify(res));
+      FB.api(
+        '/106621474728507/feed',
+        'POST',
+        {"message":"andaleee"},
+        function(res) {
+            // Insert your code here
+            if(!res || res.error) {
+
+              console.log('there is an error');
+      
+              console.log(!res ? 'error occurred' : res.error);
+      
+              return;
+      
+            }
+        }
+      );
+      
+  
+    });
 })
 
 module.exports = router;
