@@ -38,7 +38,7 @@ app.use(function (req, res, next) {
 
 //add cors
 var cors = require('cors');
-app.use(cors())
+app.use(cors({origin: 'https://planifyacs.netlify.app'}))
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
