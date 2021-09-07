@@ -46,7 +46,7 @@ router.post('/dashboard', (req, res, next) => {
 });
 router.post('/registration', function(req,res,next){
    // Website you wish to allow to connect
-   res.setHeader('Access-Control-Allow-Origin', 'https://planifybackend.herokuapp.com');
+   res.setHeader('Access-Control-Allow-Origin', 'https://planifybackend.herokuapp.com/users/registration');
 
    // Request methods you wish to allow
    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -79,7 +79,7 @@ router.post('/registration', function(req,res,next){
 
 router.post('/login', function(req,res,next){
    // Website you wish to allow to connect
-   res.setHeader('Access-Control-Allow-Origin', 'https://planifybackend.herokuapp.com');
+   res.setHeader('Access-Control-Allow-Origin', 'https://planifybackend.herokuapp.com/users/login');
 
    // Request methods you wish to allow
    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -116,7 +116,7 @@ router.post('/login', function(req,res,next){
 
 router.get('/username', verifyToken, function(req,res,next){
    // Website you wish to allow to connect
-   res.setHeader('Access-Control-Allow-Origin', 'https://planifybackend.herokuapp.com');
+   res.setHeader('Access-Control-Allow-Origin', 'https://planifybackend.herokuapp.com/users/username');
 
    // Request methods you wish to allow
    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
