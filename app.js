@@ -20,7 +20,7 @@ mongoose.connect('mongodb+srv://admin:rosfizor@cluster0.2p5ls.mongodb.net/planif
 app.use(function (req, res, next) {
 
   // Website you wish to allow to connect
-  res.setHeader('Access-Control-Allow-Origin', 'https://planifyacs.netlify.app');
+  res.setHeader('Access-Control-Allow-Origin', 'https://planifybackend.herokuapp.com');
 
   // Request methods you wish to allow
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -38,7 +38,7 @@ app.use(function (req, res, next) {
 
 //add cors
 var cors = require('cors');
-app.use(cors({origin: 'https://planifyacs.netlify.app'}))
+app.use(cors({origin: 'https://planifybackend.herokuapp.com'}))
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
