@@ -12,51 +12,39 @@ var FB = new Facebook({
 
 });
 
-router.post('/dashboard', (req, res, next) => {
-   // Website you wish to allow to connect
-   res.setHeader('Access-Control-Allow-Origin', 'https://planifyacs.netlify.app');
+// router.post('/dashboard', (req, res, next) => {
+//    // Website you wish to allow to connect
+//    res.setHeader('Access-Control-Allow-Origin', 'https://planifyacs.netlify.app');
 
-   // Request methods you wish to allow
-   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+//    // Request methods you wish to allow
+//    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
  
-   // Request headers you wish to allow
-   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+//    // Request headers you wish to allow
+//    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
  
-   // Set to true if you need the website to include cookies in the requests sent
-   // to the API (e.g. in case you use sessions)
-   res.setHeader('Access-Control-Allow-Credentials', true);
+//    // Set to true if you need the website to include cookies in the requests sent
+//    // to the API (e.g. in case you use sessions)
+//    res.setHeader('Access-Control-Allow-Credentials', true);
 
-  var user = new User({
-    email: req.body.email,
-    username: req.body.username,
-    password: User.hashPassword(req.body.password),
-    creation_dt: new Date()
-  });
+//   var user = new User({
+//     email: req.body.email,
+//     username: req.body.username,
+//     password: User.hashPassword(req.body.password),
+//     creation_dt: new Date()
+//   });
   
-  FB.api(
-    '/106621474728507/feed',
-    'POST',
-    {"message":"Schelduled post","published":"false","scheduled_publish_time":"1631030741"},
-    function(response) {
-        // Insert your code here
-        console.log(response);
-    }
-  );
+//   FB.api(
+//     '/106621474728507/feed',
+//     'POST',
+//     {"message":"Schelduled post","published":"false","scheduled_publish_time":"1631030741"},
+//     function(response) {
+//         // Insert your code here
+//         console.log(response);
+//     }
+//   );
 
-});
+// });
 router.post('/registration', function(req,res,next){
-   // Website you wish to allow to connect
-   res.setHeader('Access-Control-Allow-Origin', 'https://planifyacs.netlify.app');
-
-   // Request methods you wish to allow
-   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
- 
-   // Request headers you wish to allow
-   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
- 
-   // Set to true if you need the website to include cookies in the requests sent
-   // to the API (e.g. in case you use sessions)
-   res.setHeader('Access-Control-Allow-Credentials', true);
 
   var user = new User({
     email: req.body.email,
@@ -78,18 +66,6 @@ router.post('/registration', function(req,res,next){
 })
 
 router.post('/login', function(req,res,next){
-   // Website you wish to allow to connect
-   res.setHeader('Access-Control-Allow-Origin', 'https://planifyacs.netlify.app');
-
-   // Request methods you wish to allow
-   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
- 
-   // Request headers you wish to allow
-   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
- 
-   // Set to true if you need the website to include cookies in the requests sent
-   // to the API (e.g. in case you use sessions)
-   res.setHeader('Access-Control-Allow-Credentials', true);
 
   let promise = User.findOne({email:req.body.email}).exec();
 
@@ -115,19 +91,6 @@ router.post('/login', function(req,res,next){
 })
 
 router.get('/username', verifyToken, function(req,res,next){
-   // Website you wish to allow to connect
-   res.setHeader('Access-Control-Allow-Origin', 'https://planifyacs.netlify.app');
-
-   // Request methods you wish to allow
-   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
- 
-   // Request headers you wish to allow
-   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
- 
-   // Set to true if you need the website to include cookies in the requests sent
-   // to the API (e.g. in case you use sessions)
-   res.setHeader('Access-Control-Allow-Credentials', true);
-
   return res.status(200).json(decodedToken.username);
 })
 //middleware
