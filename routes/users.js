@@ -92,7 +92,7 @@ router.post('/dashboard',function(req,res,next){
       FB.api(
         '/106621474728507/feed',
         'POST',
-        {"message":"andaleee"},
+        {"message":"andaleee muchachos"},
         function(res) {
             // Insert your code here
             if(!res || res.error) {
