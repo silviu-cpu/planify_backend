@@ -6,9 +6,9 @@ var Facebook = require('fb').Facebook;
 
 var FB = new Facebook({
 
-  appID: APP-ID,
+  appID: 187424133360729,
 
-  secret: APP-SECRET
+  secret: db1c27b22b233b4a34761df3242b3d45
 
 });
 
