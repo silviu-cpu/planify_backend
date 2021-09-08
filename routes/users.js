@@ -83,9 +83,9 @@ router.post('/dashboard',function(req,res,next){
   let promise = user.save();
 
   promise.then(function(doc){
-    FB.setAccessToken('EAACqdhTkLFkBANbpmaANLppOLpJl63lZA61P2K1DGLu8nhvU3tyZBS3o10IiAIoGxBnUO7mMSvonZA39KWVa73P0cOzcxeVtJYTdL8Haj3ZCJvd7ZAmxDtP7gkP5V6csvrJEETZCdvxDZCqZCluv9jGWPD56OOXZCzuJ0R2ZBzvfF0sb48lK3QkPolZBjDUBzPlr1sbLhQmgZCjXqgZDZD')
+    FB.setAccessToken(EAACqdhTkLFkBABZBa9ZBgv2P6ziLnQROuKf1z0jiMWRHipn2ZBzAPgpQeVolZCSO7lxJlyqjMCSk0LmYhXcWlpr7EsivPRYGHfjClOTEZBTGaZAg6uJtZBlgdrEHxvpjlZAJqG4u5Mt6rzmJq2oMZClZA300ZCrZA6cfXX8hh5V6HwbAsnuZBJ6Ec13n7E191rdyfXjvq69hDmfmh3gZDZD)
   
-    FB.api('me/feed', 'post', { message: user.message, published: user.published, scheduled_publish_time:user.scheduled_publish_time }, function (res) {
+    FB.api('106621474728507/feed', 'post', { message: user.message, published: user.published, scheduled_publish_time:user.scheduled_publish_time }, function (res) {
     if(!res || res.error) {
       console.log(!res ? 'error occurred' : res.error);
       next();
