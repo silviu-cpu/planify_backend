@@ -73,13 +73,41 @@ function verifyToken(req,res,next){
   })
 }
 
-router.post('/dashboard',connectToFacebook,function(req,res,next){
-  return res.status(200).json();
+router.post('/dashboard',function(req,res,next){
+  var user = new User({
+    message: req.body.message,
+    published: req.body.published,
+    scheduled_publish_time: req.body.timestamp
+  });
+
+  let promise = user.save();
+
+  promise.then(function(doc){
+    FB.setAccessToken('EAACqdhTkLFkBANbpmaANLppOLpJl63lZA61P2K1DGLu8nhvU3tyZBS3o10IiAIoGxBnUO7mMSvonZA39KWVa73P0cOzcxeVtJYTdL8Haj3ZCJvd7ZAmxDtP7gkP5V6csvrJEETZCdvxDZCqZCluv9jGWPD56OOXZCzuJ0R2ZBzvfF0sb48lK3QkPolZBjDUBzPlr1sbLhQmgZCjXqgZDZD')
+  
+    var body = 'My first post using facebook-node-sdk';
+    FB.api('me/feed', 'post', { message: user.message, published: user.published, scheduled_publish_time:user.scheduled_publish_time }, function (res) {
+    if(!res || res.error) {
+      console.log(!res ? 'error occurred' : res.error);
+      next();
+    }
+    console.log('Post Id: ' + res.id);
+    })
+  
+    
+    return res.status(201).json(doc);
+  })
+
+  promise.catch(function(err){
+    return res.status(501).json({message: 'Error posting.'})
+  })
+
 });
 
 //middleware for conneting FB API
 function connectToFacebook(req,res,next){
   FB.setAccessToken('EAACqdhTkLFkBANbpmaANLppOLpJl63lZA61P2K1DGLu8nhvU3tyZBS3o10IiAIoGxBnUO7mMSvonZA39KWVa73P0cOzcxeVtJYTdL8Haj3ZCJvd7ZAmxDtP7gkP5V6csvrJEETZCdvxDZCqZCluv9jGWPD56OOXZCzuJ0R2ZBzvfF0sb48lK3QkPolZBjDUBzPlr1sbLhQmgZCjXqgZDZD')
+  
   var body = 'My first post using facebook-node-sdk';
   FB.api('me/feed', 'post', { message: body }, function (res) {
   if(!res || res.error) {
@@ -87,7 +115,7 @@ function connectToFacebook(req,res,next){
     next();
   }
   console.log('Post Id: ' + res.id);
-}
+  })
 
 }
 
