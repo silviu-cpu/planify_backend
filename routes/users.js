@@ -104,19 +104,5 @@ router.post('/dashboard',function(req,res,next){
 
 });
 
-//middleware for conneting FB API
-function connectToFacebook(req,res,next){
-  FB.setAccessToken('EAACqdhTkLFkBANbpmaANLppOLpJl63lZA61P2K1DGLu8nhvU3tyZBS3o10IiAIoGxBnUO7mMSvonZA39KWVa73P0cOzcxeVtJYTdL8Haj3ZCJvd7ZAmxDtP7gkP5V6csvrJEETZCdvxDZCqZCluv9jGWPD56OOXZCzuJ0R2ZBzvfF0sb48lK3QkPolZBjDUBzPlr1sbLhQmgZCjXqgZDZD')
-  
-  var body = 'My first post using facebook-node-sdk';
-  FB.api('me/feed', 'post', { message: body }, function (res) {
-  if(!res || res.error) {
-    console.log(!res ? 'error occurred' : res.error);
-    next();
-  }
-  console.log('Post Id: ' + res.id);
-  })
-
-}
 
 module.exports = router;
